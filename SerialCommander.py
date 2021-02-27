@@ -6,6 +6,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from os import path
 from pathlib import Path
+from functools import partial
 import json
 import glob
 import time
@@ -58,6 +59,27 @@ class SixledsAboutWindow(QDialog):
 
 		self.setLayout(self.layout)
 		self.setWindowTitle("About")
+
+class SerialCommanderTrayIcon(QSystemTrayIcon):
+	def __init__(self, parent=None):
+		QSystemTrayIcon.__init__(self, QIcon('serial'), parent)
+		self.activated.connect(parent.OnShow)
+		self.CreateMenuItems(parent)
+
+	def CreateMenuItems(self, parent):
+		menu = QMenu(parent)
+
+		for command in parent.commands:
+			commandAction = QAction(command['title'], parent)
+			commandAction.triggered.connect(partial(parent.SendCommand, command))
+			menu.addAction(commandAction)
+
+		menu.addSeparator()
+		exitAction = QAction('Exit', parent)
+		exitAction.triggered.connect(parent.OnQuit)
+		exitAction = menu.addAction(exitAction)
+
+		self.setContextMenu(menu)
 
 class SerialCommanderMainWindow(QMainWindow):
 	PRODUCT_NAME      = "SerialCommander"
@@ -245,6 +267,10 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.setMinimumSize(520, 400)
 		self.setWindowTitle(self.PRODUCT_NAME+" v"+self.PRODUCT_VERSION)
 
+		# Tray Icon
+		trayIcon = SerialCommanderTrayIcon(self)
+		trayIcon.show()
+
 		# Load Initial
 		self.UpdatePortAndBaudText()
 
@@ -271,6 +297,9 @@ class SerialCommanderMainWindow(QMainWindow):
 	def OnSendCommand(self):
 		if(len(self.listBox.selectedItems()) == 0): return
 		command = self.commands[self.listBox.currentRow()]
+		self.SendCommand(command)
+
+	def SendCommand(self, command):
 		targetPort = command['port'] if command['port'] != None else self.serialPort
 		targetBaud = command['baud'] if command['baud'] != None else self.serialBaud
 		if(self.serialConn == None or self.serialConn.port != targetPort or self.serialConn.baudrate != targetBaud):
@@ -296,11 +325,16 @@ class SerialCommanderMainWindow(QMainWindow):
 		dlg = SixledsAboutWindow(self)
 		dlg.exec_()
 
+	def OnShow(self):
+		self.show()
+
 	def OnQuit(self, e):
-		self.close()
+		self.SaveSettings()
+		sys.exit()
 
 	def closeEvent(self, event):
-		self.SaveSettings()
+		self.hide()
+		event.ignore()
 
 def main():
 	app = QApplication(sys.argv)
