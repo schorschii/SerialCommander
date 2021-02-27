@@ -169,6 +169,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		font.setPointSize(14)
 		self.textField.setFont(font)
 		self.listBox = QListWidget()
+		self.listBox.doubleClicked.connect(self.OnSendCommand)
 		#self.listBox.currentTextChanged.connect(self.OnCommandChanged)
 		for command in self.commands: self.listBox.addItem(command['title'])
 		self.listBox.setCurrentRow(0)
