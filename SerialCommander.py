@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from os import path
+from pathlib import Path
+import json
 import glob
 import time
 import platform
@@ -62,15 +64,18 @@ class SerialCommanderMainWindow(QMainWindow):
 	PRODUCT_VERSION   = "0.1.0"
 	PRODUCT_WEBSITE   = "https://georg-sieber.de"
 
+	configPath = str(Path.home())+'/.SerialCommander.json'
+	config = {}
+
 	serialConn  = None
 	serialPorts = []
 	serialPort  = None
 	serialBaud  = 9600
 	commands = [
-		{'title':'Arduino LEDcontrol: OFF', 'description':'Turn LEDs off.', 'data':'00 00 00', 'type':'hex', 'port':None, 'baud':None},
-		{'title':'Arduino LEDcontrol: RED', 'description':'Turn LEDs red.', 'data':'ff 00 00', 'type':'hex', 'port':None, 'baud':None},
-		{'title':'Arduino LEDcontrol: GREEN', 'description':'Turn LEDs green.', 'data':'00 ff 00', 'type':'hex', 'port':None, 'baud':None},
-		{'title':'Arduino LEDcontrol: BLUE', 'description':'Turn LEDs blue.', 'data':'00 00 ff', 'type':'hex', 'port':None, 'baud':None},
+		{'title':'Arduino LEDcontrol: OFF', 'description':'Turn LEDs off.', 'data':'00 00 00', 'type':'hex', 'port':None, 'baud':600},
+		{'title':'Arduino LEDcontrol: RED', 'description':'Turn LEDs red.', 'data':'ff 00 00', 'type':'hex', 'port':None, 'baud':600},
+		{'title':'Arduino LEDcontrol: GREEN', 'description':'Turn LEDs green.', 'data':'00 ff 00', 'type':'hex', 'port':None, 'baud':600},
+		{'title':'Arduino LEDcontrol: BLUE', 'description':'Turn LEDs blue.', 'data':'00 00 ff', 'type':'hex', 'port':None, 'baud':600},
 
 		{'title':'NEC Projector: ON', 'description':'Turn projector on.', 'data':'02 00 00 00 00 02', 'type':'hex', 'port':None, 'baud':None},
 		{'title':'NEC Projector: OFF', 'description':'Turn projector off.', 'data':'02 01 00 00 00 03', 'type':'hex', 'port':None, 'baud':None},
@@ -80,6 +85,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		super(SerialCommanderMainWindow, self).__init__(*args, **kwargs)
 		self.serialPorts = self.GetSerialPorts()
 		if(len(self.serialPorts) > 0): self.serialPort = self.serialPorts[0]
+		self.LoadSettings()
 		self.InitUI()
 
 	def GetSerialPorts(self):
@@ -101,6 +107,33 @@ class SerialCommanderMainWindow(QMainWindow):
 			except(OSError, serial.SerialException):
 				pass
 		return result
+
+	def LoadSettings(self):
+		if(not path.isfile(self.configPath)): return
+
+		with open(self.configPath) as f:
+			self.config = json.load(f)
+
+		if('DEFAULT' in self.config):
+			if('port' in self.config['DEFAULT']): self.serialPort = self.config['DEFAULT']['port']
+			if('baud' in self.config['DEFAULT']): self.serialBaud = int(self.config['DEFAULT']['baud'])
+
+		if('COMMANDS' in self.config):
+			self.commands = []
+			for command in self.config['COMMANDS']:
+				self.commands.append(command)
+
+	def SaveSettings(self):
+		if(not 'DEFAULT' in self.config): self.config['DEFAULT'] = {}
+		self.config['DEFAULT']['port'] = self.serialPort
+		self.config['DEFAULT']['baud'] = self.serialBaud
+
+		self.config['COMMANDS'] = []
+		for command in self.commands:
+			self.config['COMMANDS'].append(command)
+
+		with open(self.configPath, 'w') as json_file:
+			json.dump(self.config, json_file, indent=4)
 
 	def InitUI(self):
 		# Menubar
@@ -220,9 +253,12 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.baudAction.setText('Baud: '+str(self.serialBaud))
 
 	def SetupConnection(self, serialPort, serialBaud, message=True):
-		if(self.serialConn != None and self.serialConn.isopen()): self.serialConn.close()
+		if(self.serialConn != None and self.serialConn.is_open):
+			self.serialConn.close()
+			print('Closed Port')
 		try:
 			self.serialConn = serial.Serial(serialPort, serialBaud)
+			print('Opened Port '+str(serialPort)+' @ '+str(serialBaud))
 			return True
 		except Exception as e:
 			if(message):
@@ -237,9 +273,11 @@ class SerialCommanderMainWindow(QMainWindow):
 		command = self.commands[self.listBox.currentRow()]
 		targetPort = command['port'] if command['port'] != None else self.serialPort
 		targetBaud = command['baud'] if command['baud'] != None else self.serialBaud
-		if(self.serialConn == None or self.serialPort != targetPort or self.serialBaud != targetBaud):
+		if(self.serialConn == None or self.serialConn.port != targetPort or self.serialConn.baudrate != targetBaud):
+			print('Setup New Connection...')
 			if(not self.SetupConnection(targetPort, targetBaud)): return
 		if(command['type'] == 'hex'):
+			print('Send(HEX): '+command['data'].replace(' ', ''))
 			self.serialConn.write(bytearray.fromhex(command['data'].replace(' ', '')))
 
 	def OnSelectSerialPort(self, e):
@@ -260,6 +298,9 @@ class SerialCommanderMainWindow(QMainWindow):
 
 	def OnQuit(self, e):
 		self.close()
+
+	def closeEvent(self, event):
+		self.SaveSettings()
 
 def main():
 	app = QApplication(sys.argv)
