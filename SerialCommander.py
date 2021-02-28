@@ -7,6 +7,7 @@ from PyQt5.QtCore import *
 from os import path
 from pathlib import Path
 from functools import partial
+import argparse
 import json
 import glob
 import time
@@ -367,9 +368,13 @@ class SerialCommanderMainWindow(QMainWindow):
 		event.ignore()
 
 def main():
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--hidden', action='store_true', help='Only show tray icon (use this parameter if you want to add this program to your auto start)')
+	args = parser.parse_args()
+
 	app = QApplication(sys.argv)
 	window = SerialCommanderMainWindow()
-	window.show()
+	if(not args.hidden): window.show()
 	sys.exit(app.exec_())
 
 if __name__ == '__main__':
