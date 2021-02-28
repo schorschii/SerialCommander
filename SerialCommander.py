@@ -63,6 +63,8 @@ class SixledsAboutWindow(QDialog):
 class SerialCommanderTrayIcon(QSystemTrayIcon):
 	TRAYICON_BASE64 = b"iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAdhwAAHYcBj+XxZQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFGSURBVGiB7ZgxbsMwDEW/a6+BhcBjzpAzpFOvlLUXaA/UoblC5s4dHRDoakAZ4gBth9SflKoY5ttshBQ/vyw7BBxn2VSaoL7vN3VdvwJ4ArAy1vAF4K2qqn3bth9sMC1gLP4IYM3G/sFpGIZt13WfTNADu8rY+dTFA8C6aZoXNogWgMu2yQWdu1Es8mPPhxBUz9EVEYnfLls2XuPAXZFcgIjEX129ed+KO1Ca2QuYfILk2L+3mHq6zd4BF1AaF1AaF1AaF1AaF1AaRsAhVxGWtSYLiDE+q0pRwKxF/Z8VkXcAO7YgkkMI4XHqj6ln4D9cYNegJwqZXaC6DyhOoZwuaHKrZjqZXKC7DyjfAzlc0OZUT9USu6DqPmB4E6d0wZLLOtdM4YK6+4DxWyiFC9YcJgcA+7zIOt1e1NfoXeICSjN7AY6zdM4ms3HuqN4SwgAAAABJRU5ErkJggg=="
 
+	trayMenu = None
+
 	def __init__(self, parent=None):
 		pixmap = QPixmap()
 		pixmap.loadFromData(QByteArray.fromBase64(self.TRAYICON_BASE64))
@@ -71,24 +73,28 @@ class SerialCommanderTrayIcon(QSystemTrayIcon):
 		self.CreateMenuItems(parent)
 
 	def CreateMenuItems(self, parent):
-		menu = QMenu(parent)
+		if(self.trayMenu == None):
+			self.trayMenu = QMenu(parent)
 
+		self.trayMenu.clear()
 		for command in parent.commands:
 			commandAction = QAction(command['title'], parent)
 			commandAction.triggered.connect(partial(parent.SendCommand, command))
-			menu.addAction(commandAction)
+			self.trayMenu.addAction(commandAction)
 
-		menu.addSeparator()
+		self.trayMenu.addSeparator()
 		exitAction = QAction('Exit', parent)
 		exitAction.triggered.connect(parent.OnQuit)
-		exitAction = menu.addAction(exitAction)
+		exitAction = self.trayMenu.addAction(exitAction)
 
-		self.setContextMenu(menu)
+		self.setContextMenu(self.trayMenu)
 
 class SerialCommanderMainWindow(QMainWindow):
 	PRODUCT_NAME      = "SerialCommander"
 	PRODUCT_VERSION   = "0.1.0"
 	PRODUCT_WEBSITE   = "https://georg-sieber.de"
+
+	trayIcon = None
 
 	configPath = str(Path.home())+'/.SerialCommander.json'
 	config = {}
@@ -190,7 +196,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		fileMenu.addAction(addCommandAction)
 		removeCommandAction = QAction('&Remove Command', self)
 		removeCommandAction.setShortcut('DEL')
-		removeCommandAction.triggered.connect(self.OnSelectSerialBaud)
+		removeCommandAction.triggered.connect(self.OnRemoveCommand)
 		fileMenu.addAction(removeCommandAction)
 
 		fileMenu.addSeparator()
@@ -230,8 +236,6 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.listBox = QListWidget()
 		self.listBox.doubleClicked.connect(self.OnSendCommand)
 		#self.listBox.currentTextChanged.connect(self.OnCommandChanged)
-		for command in self.commands: self.listBox.addItem(command['title'])
-		self.listBox.setCurrentRow(0)
 
 		splitter = QSplitter(Qt.Horizontal)
 		splitter.addWidget(self.listBox)
@@ -272,15 +276,27 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.setWindowTitle(self.PRODUCT_NAME+" v"+self.PRODUCT_VERSION)
 
 		# Tray Icon
-		trayIcon = SerialCommanderTrayIcon(self)
-		trayIcon.show()
+		self.trayIcon = SerialCommanderTrayIcon(self)
+		self.trayIcon.show()
 
 		# Load Initial
+		self.RefreshCommandList()
 		self.UpdatePortAndBaudText()
 
 	def UpdatePortAndBaudText(self):
 		self.portAction.setText('Port: '+str(self.serialPort))
 		self.baudAction.setText('Baud: '+str(self.serialBaud))
+
+	def RefreshCommandList(self):
+		self.listBox.clear()
+		for command in self.commands: self.listBox.addItem(command['title'])
+		self.listBox.setCurrentRow(0)
+		self.trayIcon.CreateMenuItems(self)
+
+	def OnRemoveCommand(self):
+		if(len(self.listBox.selectedItems()) == 0): return
+		del self.commands[self.listBox.currentRow()]
+		self.RefreshCommandList()
 
 	def SetupConnection(self, serialPort, serialBaud, message=True):
 		if(self.serialConn != None and self.serialConn.is_open):
