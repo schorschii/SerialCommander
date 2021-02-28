@@ -103,8 +103,8 @@ class SerialCommanderMainWindow(QMainWindow):
 		{'title':'Arduino LEDcontrol: GREEN', 'description':'Turn LEDs green.', 'data':'00 ff 00', 'type':'hex', 'port':None, 'baud':600},
 		{'title':'Arduino LEDcontrol: BLUE', 'description':'Turn LEDs blue.', 'data':'00 00 ff', 'type':'hex', 'port':None, 'baud':600},
 
-		{'title':'NEC Projector: ON', 'description':'Turn projector on.', 'data':'02 00 00 00 00 02', 'type':'hex', 'port':None, 'baud':None},
-		{'title':'NEC Projector: OFF', 'description':'Turn projector off.', 'data':'02 01 00 00 00 03', 'type':'hex', 'port':None, 'baud':None},
+		{'title':'NEC Projector: ON', 'description':'Turn projector on.', 'data':'02 00 00 00 00 02', 'type':'hex', 'port':None, 'baud':38400},
+		{'title':'NEC Projector: OFF', 'description':'Turn projector off.', 'data':'02 01 00 00 00 03', 'type':'hex', 'port':None, 'baud':38400},
 	]
 
 	def __init__(self, *args, **kwargs):
@@ -288,7 +288,7 @@ class SerialCommanderMainWindow(QMainWindow):
 			print('Closed Port')
 		try:
 			self.serialConn = serial.Serial(serialPort, serialBaud)
-			print('Opened Port '+str(serialPort)+' @ '+str(serialBaud))
+			print('Opened Port '+str(self.serialConn.port)+' @ '+str(self.serialConn.baudrate)+' @ '+str(self.serialConn.parity)+' @ '+str(self.serialConn.stopbits)+' @ '+str(self.serialConn.bytesize))
 			return True
 		except Exception as e:
 			if(message):
