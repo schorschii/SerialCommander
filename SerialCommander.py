@@ -112,6 +112,9 @@ class SerialCommanderMainWindow(QMainWindow):
 
 		{'title':'NEC Projector: ON', 'description':'Turn projector on.', 'data':'02 00 00 00 00 02', 'type':'hex', 'port':None, 'baud':38400},
 		{'title':'NEC Projector: OFF', 'description':'Turn projector off.', 'data':'02 01 00 00 00 03', 'type':'hex', 'port':None, 'baud':38400},
+
+		{'title':'BENQ Projector: ON', 'description':'Turn projector on.', 'data':'0d 2a 70 6f 77 3d 6f 6e 23 0d', 'type':'hex', 'port':None, 'baud':None},
+		{'title':'BENQ Projector: OFF', 'description':'Turn projector off.', 'data':'0d 2a 70 6f 77 3d 6f 66 66 23 0d', 'type':'hex', 'port':None, 'baud':None},
 	]
 
 	def __init__(self, *args, **kwargs):
