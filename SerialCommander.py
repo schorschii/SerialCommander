@@ -61,8 +61,12 @@ class SixledsAboutWindow(QDialog):
 		self.setWindowTitle("About")
 
 class SerialCommanderTrayIcon(QSystemTrayIcon):
+	TRAYICON_BASE64 = b"iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAdhwAAHYcBj+XxZQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFGSURBVGiB7ZgxbsMwDEW/a6+BhcBjzpAzpFOvlLUXaA/UoblC5s4dHRDoakAZ4gBth9SflKoY5ttshBQ/vyw7BBxn2VSaoL7vN3VdvwJ4ArAy1vAF4K2qqn3bth9sMC1gLP4IYM3G/sFpGIZt13WfTNADu8rY+dTFA8C6aZoXNogWgMu2yQWdu1Es8mPPhxBUz9EVEYnfLls2XuPAXZFcgIjEX129ed+KO1Ca2QuYfILk2L+3mHq6zd4BF1AaF1AaF1AaF1AaF1AaRsAhVxGWtSYLiDE+q0pRwKxF/Z8VkXcAO7YgkkMI4XHqj6ln4D9cYNegJwqZXaC6DyhOoZwuaHKrZjqZXKC7DyjfAzlc0OZUT9USu6DqPmB4E6d0wZLLOtdM4YK6+4DxWyiFC9YcJgcA+7zIOt1e1NfoXeICSjN7AY6zdM4ms3HuqN4SwgAAAABJRU5ErkJggg=="
+
 	def __init__(self, parent=None):
-		QSystemTrayIcon.__init__(self, QIcon('serial'), parent)
+		pixmap = QPixmap()
+		pixmap.loadFromData(QByteArray.fromBase64(self.TRAYICON_BASE64))
+		QSystemTrayIcon.__init__(self, QIcon(pixmap), parent)
 		self.activated.connect(parent.OnShow)
 		self.CreateMenuItems(parent)
 
