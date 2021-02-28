@@ -309,9 +309,19 @@ class SerialCommanderMainWindow(QMainWindow):
 		if(self.serialConn == None or self.serialConn.port != targetPort or self.serialConn.baudrate != targetBaud):
 			print('Setup New Connection...')
 			if(not self.SetupConnection(targetPort, targetBaud)): return
-		if(command['type'] == 'hex'):
-			print('Send(HEX): '+command['data'].replace(' ', ''))
-			self.serialConn.write(bytearray.fromhex(command['data'].replace(' ', '')))
+		try:
+			if(command['type'] == 'hex'):
+				print('Send(HEX): '+command['data'].replace(' ', ''))
+				self.serialConn.write(bytearray.fromhex(command['data'].replace(' ', '')))
+		except Exception as e:
+			msg = QMessageBox()
+			msg.setIcon(QMessageBox.Critical)
+			msg.setWindowTitle('Error sending data')
+			msg.setText('Could not send data of command »'+str(command['title'])+'«.')
+			msg.setInformativeText(str(e))
+			msg.setDetailedText(str(command['data']))
+			msg.setStandardButtons(QMessageBox.Ok)
+			retval = msg.exec_()
 
 	def OnSelectSerialPort(self, e):
 		item, ok = QInputDialog.getItem(self, "Port Selection", "Please select serial port which should be used to communicate with the device.", self.serialPorts, 0, False)
