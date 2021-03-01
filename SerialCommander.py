@@ -113,8 +113,14 @@ class SerialCommanderMainWindow(QMainWindow):
 		{'title':'NEC Projector: ON', 'description':'Turn projector on.', 'data':'02 00 00 00 00 02', 'type':'hex', 'port':None, 'baud':38400},
 		{'title':'NEC Projector: OFF', 'description':'Turn projector off.', 'data':'02 01 00 00 00 03', 'type':'hex', 'port':None, 'baud':38400},
 
-		{'title':'BENQ Projector: ON', 'description':'Turn projector on.', 'data':'0d 2a 70 6f 77 3d 6f 6e 23 0d', 'type':'hex', 'port':None, 'baud':None},
-		{'title':'BENQ Projector: OFF', 'description':'Turn projector off.', 'data':'0d 2a 70 6f 77 3d 6f 66 66 23 0d', 'type':'hex', 'port':None, 'baud':None},
+		{'title':'BENQ Projector: ON', 'description':'Turn projector on.', 'data':'0d 2a 70 6f 77 3d 6f 6e 23 0d', 'type':'hex', 'port':None, 'baud':115200},
+		{'title':'BENQ Projector: OFF', 'description':'Turn projector off.', 'data':'0d 2a 70 6f 77 3d 6f 66 66 23 0d', 'type':'hex', 'port':None, 'baud':115200},
+
+		{'title':'PANASONIC Projector: ON', 'description':'Turn projector on.', 'data':'02 41 44 5a 5a 3b 50 4f 4e 03', 'type':'hex', 'port':None, 'baud':9600},
+		{'title':'PANASONIC Projector: OFF', 'description':'Turn projector off.', 'data':'02 41 44 5a 5a 3b 50 4f 46 03', 'type':'hex', 'port':None, 'baud':9600},
+
+		{'title':'OPTOMA Projector: ON', 'description':'Turn projector on.', 'data':'7e 30 30 30 30 20 31', 'type':'hex', 'port':None, 'baud':9600},
+		{'title':'OPTOMA Projector: OFF', 'description':'Turn projector off.', 'data':'7e 30 30 30 30 20 32', 'type':'hex', 'port':None, 'baud':9600},
 	]
 
 	def __init__(self, args):
