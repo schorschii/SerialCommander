@@ -62,13 +62,11 @@ class SixledsAboutWindow(QDialog):
 		self.setWindowTitle("About")
 
 class SerialCommanderTrayIcon(QSystemTrayIcon):
-	TRAYICON_BASE64 = b"iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAdhwAAHYcBj+XxZQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFGSURBVGiB7ZgxbsMwDEW/a6+BhcBjzpAzpFOvlLUXaA/UoblC5s4dHRDoakAZ4gBth9SflKoY5ttshBQ/vyw7BBxn2VSaoL7vN3VdvwJ4ArAy1vAF4K2qqn3bth9sMC1gLP4IYM3G/sFpGIZt13WfTNADu8rY+dTFA8C6aZoXNogWgMu2yQWdu1Es8mPPhxBUz9EVEYnfLls2XuPAXZFcgIjEX129ed+KO1Ca2QuYfILk2L+3mHq6zd4BF1AaF1AaF1AaF1AaF1AaRsAhVxGWtSYLiDE+q0pRwKxF/Z8VkXcAO7YgkkMI4XHqj6ln4D9cYNegJwqZXaC6DyhOoZwuaHKrZjqZXKC7DyjfAzlc0OZUT9USu6DqPmB4E6d0wZLLOtdM4YK6+4DxWyiFC9YcJgcA+7zIOt1e1NfoXeICSjN7AY6zdM4ms3HuqN4SwgAAAABJRU5ErkJggg=="
-
 	trayMenu = None
 
 	def __init__(self, parent=None):
 		pixmap = QPixmap()
-		pixmap.loadFromData(QByteArray.fromBase64(self.TRAYICON_BASE64))
+		pixmap.loadFromData(parent.ICON_BYTES)
 		QSystemTrayIcon.__init__(self, QIcon(pixmap), parent)
 		self.activated.connect(parent.OnShow)
 		self.CreateMenuItems(parent)
@@ -94,6 +92,8 @@ class SerialCommanderMainWindow(QMainWindow):
 	PRODUCT_NAME      = "SerialCommander"
 	PRODUCT_VERSION   = "0.1.0"
 	PRODUCT_WEBSITE   = "https://georg-sieber.de"
+	ICON_BASE64       = b"iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAACdeAAAnXgHPwViOAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABAxJREFUeJztm89LI2cYx7/zTqajCQ0mInMQdik5qIkuDZ6Cp72UUhAvuxTW7gp7rJRC+0e0wrLbi9seSouLRJSiqLB4ixfJHzCK9SClsBeR1NR2m8aZd9JDJm4StuvmnWfmtfT9QEgm75tnnvk+z/tj3nkDKBQKxf8YLUS71LYb/osUSicZgHcA9BUKhcTExMS7nueR2GeMNWzb/qNcLr8E8DeACwAehW0qAVgymRwoFotf5HK5+6lU6gaR3Q7Ozs5+3d/ffzY7O/vN+fl5FQQiUAigJZPJVKlUWslkMh8Q2LuS4+PjncnJyXsAqgjYLBiBP+by8vLnUV08AGQymQ+3trY+Q7PJBYJEgPHx8fsEdnoim83OAegLaicW8PeaZVnmwMDAze6Cer3+V0DbHZimGW8/TqfTNy3LMk9OTjQEaAZBBUA+n48zxjoyiXPuWpZ1C8BZV/X2Pqfb6TeVpSqVys+6rl/6yxjT8/l8fGdnR9R1AAQCvIEqgN/8z615gem/uwAcvLpQDYDh+9MAUEfnuB/WfCVUAToYGRlJLC0tPfU8j52enj6fmZlZQ1MEAIhtbm7eHRoa+ogx5s3NzX16dHT0ZxR+RSaA67r9o6OjnwCAbds1AOtoEyCdTt/OZrP3/LpfAohEAIpR4K3gnLOuz+1prb2mPBIiO9F1RbQJtDoto1qt9v9LnX4AidZBrVa7rOe6ru6Xt7Kgz/+uvW77sPfac/jnjqPZlNo71bdGVABje3v7weDg4G3HcRLdhYwxViqVnsRiMbf1neM4l7O24eHhwu7u7re6rnMA4JzrlmW93ypfWVl5ZBjGRevYdd1Y91ALAAsLC18ZhvGyUqmUpqenn6F5k9QTosNLvFwu/zA2Nvax4O9JOTw8XC0UCg8B9Dz5Eu0DNM/zrk3/4fsiFMxrcxGyUALIdkA2SgDZDshGCSDbAdkoAWQ7IBslgGwHZCMsgKZp5M/pRAnii6gAnuu6v4uelBrfF6HHZKICXKyvr3/HOe/5/psazrmzsbHxPQTWAgDx9QANQGJvb+/HXC53R9AGCQcHBz9NTU09RHMRteemIJoBDQC11dXVr2VmAefcWVtbe4TmQohQPxDkgYP0LAgafSDYMCg1CyiiDwR/5CQtCyiiDwSfCEnJAqroA0Q7RBBxFlBFH6CZCkeaBZTRB+geO0eWBZTRB+huhiLJAuroA7QbD0LPAuroA7S3w6FmQRjRB+i3noSWBWFEH6BfEGkAqBWLxcfEduHbJI0+EM6KkGfb9gtqo75Nkv3B7YSyJMYYI18tCsMmoNYElQBKANkOyCYUAUzT5P8Fm0B4e3CN+fn59+r1un511asxTZMvLi7+glc7S8kI809TlPYbXe8KhUKhoOAfZeezVYbuDMMAAAAASUVORK5CYII="
+	ICON_BYTES        = QByteArray.fromBase64(ICON_BASE64)
 
 	trayIcon = None
 
@@ -253,13 +253,9 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.setCentralWidget(widget)
 
 		# Icon Selection
-		#if(getattr(sys, 'frozen', False)):
-		#	# included via pyinstaller (Windows & macOS)
-		#	self.PRODUCT_ICON_PATH = sys._MEIPASS
-		#self.iconPath = path.join(self.PRODUCT_ICON_PATH, self.PRODUCT_ICON)
-		#if(path.exists(self.iconPath)):
-		#	self.icon = QIcon(self.iconPath)
-		#	self.setWindowIcon(self.icon)
+		pixmap = QPixmap()
+		pixmap.loadFromData(self.ICON_BYTES)
+		self.setWindowIcon(QIcon(pixmap))
 
 		# Toolbar
 		toolbar = QToolBar(self)
@@ -377,6 +373,11 @@ def main():
 
 	app = QApplication(sys.argv)
 	window = SerialCommanderMainWindow()
+
+	pixmap = QPixmap()
+	pixmap.loadFromData(window.ICON_BYTES)
+	app.setWindowIcon(QIcon(pixmap))
+
 	if(not args.hidden): window.show()
 	sys.exit(app.exec_())
 
