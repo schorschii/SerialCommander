@@ -253,7 +253,6 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.textField.setFont(font)
 		self.listBox = QListWidget()
 		self.listBox.itemActivated.connect(self.OnSendCommand)
-		self.listBox.doubleClicked.connect(self.OnSendCommand)
 		#self.listBox.currentTextChanged.connect(self.OnCommandChanged)
 
 		splitter = QSplitter(Qt.Horizontal)
