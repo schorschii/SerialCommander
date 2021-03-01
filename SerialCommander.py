@@ -117,11 +117,19 @@ class SerialCommanderMainWindow(QMainWindow):
 		{'title':'BENQ Projector: OFF', 'description':'Turn projector off.', 'data':'0d 2a 70 6f 77 3d 6f 66 66 23 0d', 'type':'hex', 'port':None, 'baud':None},
 	]
 
-	def __init__(self, *args, **kwargs):
-		super(SerialCommanderMainWindow, self).__init__(*args, **kwargs)
+	def __init__(self, args):
+		super(SerialCommanderMainWindow, self).__init__()
+
 		self.serialPorts = self.GetSerialPorts()
 		if(len(self.serialPorts) > 0): self.serialPort = self.serialPorts[0]
+
+		if(args.config != None): self.configPath = args.config
 		self.LoadSettings()
+		if(args.send_and_exit):
+			for command in self.commands:
+				self.SendCommand(command)
+			sys.exit()
+
 		self.InitUI()
 
 	def GetSerialPorts(self):
@@ -369,10 +377,12 @@ class SerialCommanderMainWindow(QMainWindow):
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--hidden', action='store_true', help='Only show tray icon (use this parameter if you want to add this program to your auto start)')
+	parser.add_argument('--config', default=None, help='Use this config file')
+	parser.add_argument('--send-and-exit', action='store_true', help='Send all commands from config file and exit')
 	args = parser.parse_args()
 
 	app = QApplication(sys.argv)
-	window = SerialCommanderMainWindow()
+	window = SerialCommanderMainWindow(args)
 
 	pixmap = QPixmap()
 	pixmap.loadFromData(window.ICON_BYTES)
