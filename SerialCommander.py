@@ -197,13 +197,13 @@ class SerialCommanderMainWindow(QMainWindow):
 
 		fileMenu.addSeparator()
 		addCommandAction = QAction('&Send Command...', self)
-		addCommandAction.setShortcut('ENTER')
-		addCommandAction.triggered.connect(self.OnSelectSerialPort)
+		addCommandAction.setShortcut('F2')
+		addCommandAction.triggered.connect(self.OnSendCommand)
 		fileMenu.addAction(addCommandAction)
 
 		fileMenu.addSeparator()
 		addCommandAction = QAction('&Add Command...', self)
-		addCommandAction.setShortcut('INS')
+		addCommandAction.setShortcut('Ctrl+I')
 		addCommandAction.triggered.connect(self.OnSelectSerialPort)
 		fileMenu.addAction(addCommandAction)
 		removeCommandAction = QAction('&Remove Command', self)
@@ -213,11 +213,11 @@ class SerialCommanderMainWindow(QMainWindow):
 
 		fileMenu.addSeparator()
 		addCommandAction = QAction('&Import Commands...', self)
-		addCommandAction.setShortcut('Ctrl+I')
+		addCommandAction.setShortcut('Ctrl+O')
 		addCommandAction.triggered.connect(self.OnSelectSerialPort)
 		fileMenu.addAction(addCommandAction)
 		removeCommandAction = QAction('&Export Commands...', self)
-		removeCommandAction.setShortcut('Ctrl+E')
+		removeCommandAction.setShortcut('Ctrl+S')
 		removeCommandAction.triggered.connect(self.OnSelectSerialBaud)
 		fileMenu.addAction(removeCommandAction)
 
@@ -246,6 +246,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		font.setPointSize(14)
 		self.textField.setFont(font)
 		self.listBox = QListWidget()
+		self.listBox.itemActivated.connect(self.OnSendCommand)
 		self.listBox.doubleClicked.connect(self.OnSendCommand)
 		#self.listBox.currentTextChanged.connect(self.OnCommandChanged)
 
