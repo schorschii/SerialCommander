@@ -130,8 +130,8 @@ class SerialCommanderMainWindow(QMainWindow):
 		if(len(self.serialPorts) > 0): self.serialPort = self.serialPorts[0]
 
 		if(args.config != None): self.configPath = args.config
-		self.LoadSettings()
 		if(args.send_and_exit):
+			self.LoadSettings(self.configPath, False)
 			for command in self.commands:
 				self.SendCommand(command)
 			sys.exit()
@@ -149,7 +149,7 @@ class SerialCommanderMainWindow(QMainWindow):
 			raise EnvironmentError('Unsupported platform')
 		result = []
 		for port in ports:
-			if("bluetooth" in port): continue # macOS
+			if('bluetooth' in port): continue # macOS
 			try:
 				s = serial.Serial(port)
 				s.close()
@@ -158,22 +158,34 @@ class SerialCommanderMainWindow(QMainWindow):
 				pass
 		return result
 
-	def LoadSettings(self):
-		if(not path.isfile(self.configPath)): return
+	def LoadSettings(self, configPath, updateUi):
+		if(not path.isfile(configPath)): return
 
-		with open(self.configPath) as f:
-			self.config = json.load(f)
+		try:
+			with open(configPath) as f:
+				self.config = json.load(f)
+		except Exception as e:
+			print(str(e))
+			if(updateUi):
+				msg = QMessageBox()
+				msg.setIcon(QMessageBox.Critical)
+				msg.setWindowTitle('Error loading command file')
+				msg.setText(str(e))
+				msg.setStandardButtons(QMessageBox.Ok)
+				retval = msg.exec_()
 
 		if('DEFAULT' in self.config):
 			if('port' in self.config['DEFAULT']): self.serialPort = self.config['DEFAULT']['port']
 			if('baud' in self.config['DEFAULT']): self.serialBaud = int(self.config['DEFAULT']['baud'])
+			if(updateUi): self.UpdatePortAndBaudText()
 
 		if('COMMANDS' in self.config):
 			self.commands = []
 			for command in self.config['COMMANDS']:
 				self.commands.append(command)
+			if(updateUi): self.RefreshCommandList()
 
-	def SaveSettings(self):
+	def SaveSettings(self, configPath):
 		if(not 'DEFAULT' in self.config): self.config['DEFAULT'] = {}
 		self.config['DEFAULT']['port'] = self.serialPort
 		self.config['DEFAULT']['baud'] = self.serialBaud
@@ -182,7 +194,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		for command in self.commands:
 			self.config['COMMANDS'].append(command)
 
-		with open(self.configPath, 'w') as json_file:
+		with open(configPath, 'w') as json_file:
 			json.dump(self.config, json_file, indent=4)
 
 	def InitUI(self):
@@ -192,11 +204,11 @@ class SerialCommanderMainWindow(QMainWindow):
 		# File Menu
 		fileMenu = mainMenu.addMenu('&File')
 
-		selectPortAction = QAction('Select Serial &Port...', self)
+		selectPortAction = QAction('Select Default &Port...', self)
 		selectPortAction.setShortcut('Ctrl+P')
 		selectPortAction.triggered.connect(self.OnSelectSerialPort)
 		fileMenu.addAction(selectPortAction)
-		selectPortAction = QAction('Select &Baudrate...', self)
+		selectPortAction = QAction('Select Default &Baudrate...', self)
 		selectPortAction.setShortcut('Ctrl+B')
 		selectPortAction.triggered.connect(self.OnSelectSerialBaud)
 		fileMenu.addAction(selectPortAction)
@@ -210,7 +222,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		fileMenu.addSeparator()
 		addCommandAction = QAction('&Add Command...', self)
 		addCommandAction.setShortcut('Ctrl+I')
-		addCommandAction.triggered.connect(self.OnSelectSerialPort)
+		addCommandAction.triggered.connect(self.OnAddCommand)
 		fileMenu.addAction(addCommandAction)
 		removeCommandAction = QAction('&Remove Command', self)
 		removeCommandAction.setShortcut('DEL')
@@ -218,13 +230,13 @@ class SerialCommanderMainWindow(QMainWindow):
 		fileMenu.addAction(removeCommandAction)
 
 		fileMenu.addSeparator()
-		addCommandAction = QAction('&Import Commands...', self)
+		addCommandAction = QAction('&Open Command File...', self)
 		addCommandAction.setShortcut('Ctrl+O')
-		addCommandAction.triggered.connect(self.OnSelectSerialPort)
+		addCommandAction.triggered.connect(self.OnOpenFile)
 		fileMenu.addAction(addCommandAction)
-		removeCommandAction = QAction('&Export Commands...', self)
+		removeCommandAction = QAction('&Save Command File...', self)
 		removeCommandAction.setShortcut('Ctrl+S')
-		removeCommandAction.triggered.connect(self.OnSelectSerialBaud)
+		removeCommandAction.triggered.connect(self.OnSaveFile)
 		fileMenu.addAction(removeCommandAction)
 
 		fileMenu.addSeparator()
@@ -293,9 +305,8 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.trayIcon = SerialCommanderTrayIcon(self)
 		self.trayIcon.show()
 
-		# Load Initial
-		self.RefreshCommandList()
-		self.UpdatePortAndBaudText()
+		# Load Settings
+		self.LoadSettings(self.configPath, True)
 
 	def UpdatePortAndBaudText(self):
 		self.portAction.setText('Port: '+str(self.serialPort))
@@ -306,6 +317,15 @@ class SerialCommanderMainWindow(QMainWindow):
 		for command in self.commands: self.listBox.addItem(command['title'])
 		self.listBox.setCurrentRow(0)
 		self.trayIcon.CreateMenuItems(self)
+
+	def OnAddCommand(self):
+		msg = QMessageBox()
+		msg.setIcon(QMessageBox.Information)
+		msg.setWindowTitle('Not implemented')
+		msg.setText('Please use a text editor to edit »~/.SerialCommander.json« in order to add or modify commands.')
+		msg.setDetailedText('You think this sucks? Just make a pull request :-)')
+		msg.setStandardButtons(QMessageBox.Ok)
+		retval = msg.exec_()
 
 	def OnRemoveCommand(self):
 		if(len(self.listBox.selectedItems()) == 0): return
@@ -365,6 +385,16 @@ class SerialCommanderMainWindow(QMainWindow):
 				self.serialBaud = item
 				self.UpdatePortAndBaudText()
 
+	def OnOpenFile(self, e):
+		fileName, _ = QFileDialog.getOpenFileName(self, "Choose Command File", "", "SerialCommander Files (*.json);;All Files (*.*)")
+		if(not fileName): return
+		self.LoadSettings(fileName, True)
+
+	def OnSaveFile(self, e):
+		fileName, _ = QFileDialog.getSaveFileName(self, "Save Command File", "", "SerialCommander Files (*.json);;All Files (*.*)")
+		if(not fileName): return
+		self.SaveSettings(fileName)
+
 	def OnOpenAboutDialog(self, e):
 		dlg = SixledsAboutWindow(self)
 		dlg.exec_()
@@ -373,7 +403,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.show()
 
 	def OnQuit(self, e):
-		self.SaveSettings()
+		self.SaveSettings(self.configPath)
 		sys.exit()
 
 	def closeEvent(self, event):
