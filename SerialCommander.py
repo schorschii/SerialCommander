@@ -288,8 +288,11 @@ class SerialCommanderMainWindow(QMainWindow):
 		# Load Settings
 		self.LoadSettings(self.configPath, True)
 
-		# Show Donation Note
-		self.statusBar.showMessage("If you like SerialCommander please consider making a donation to support further development ("+self.PRODUCT_WEBSITE+").")
+		# Show Note
+		if(len(self.commands) == 0):
+			self.statusBar.showMessage("Please open a command configuration file (File -> Open File...)")
+		else:
+			self.statusBar.showMessage("If you like SerialCommander please consider making a donation to support further development ("+self.PRODUCT_WEBSITE+").")
 
 	def UpdatePortAndBaudText(self):
 		self.portAction.setText('Port: '+str(self.serialPort))
@@ -406,7 +409,10 @@ class SerialCommanderMainWindow(QMainWindow):
 				self.UpdatePortAndBaudText()
 
 	def OnOpenFile(self, e):
-		fileName, _ = QFileDialog.getOpenFileName(self, "Choose Command File", "", "SerialCommander Files (*.json);;All Files (*.*)")
+		defaultExamplesPath = "/usr/share/SerialCommander/examples"
+		defaultPath = ""
+		if(path.exists(defaultExamplesPath)): defaultPath = defaultExamplesPath
+		fileName, _ = QFileDialog.getOpenFileName(self, "Choose Command File", defaultPath, "SerialCommander Files (*.json);;All Files (*.*)")
 		if(not fileName): return
 		self.LoadSettings(fileName, True)
 
