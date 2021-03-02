@@ -1,0 +1,36 @@
+{
+    "DEFAULT": {
+        "port": "/dev/ttyUSB0",
+        "baud": 9600
+    },
+    "COMMANDS": [
+        {
+            "title": "Arduino LEDcontrol: OFF",
+            "data": "00 00 00",
+            "type": "hex",
+            "port": null,
+            "baud": 600
+        },
+        {
+            "title": "Arduino LEDcontrol: RED",
+            "data": "ff 00 00",
+            "type": "hex",
+            "port": null,
+            "baud": 600
+        },
+        {
+            "title": "Arduino LEDcontrol: GREEN",
+            "data": "00 ff 00",
+            "type": "hex",
+            "port": null,
+            "baud": 600
+        },
+        {
+            "title": "Arduino LEDcontrol: BLUE",
+            "data": "00 00 ff",
+            "type": "hex",
+            "port": null,
+            "baud": 600
+        }
+    ]
+}

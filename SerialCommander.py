@@ -104,24 +104,7 @@ class SerialCommanderMainWindow(QMainWindow):
 	serialPorts = []
 	serialPort  = None
 	serialBaud  = 9600
-	commands = [
-		{'title':'Arduino LEDcontrol: OFF', 'description':'Turn LEDs off.', 'data':'00 00 00', 'type':'hex', 'port':None, 'baud':600},
-		{'title':'Arduino LEDcontrol: RED', 'description':'Turn LEDs red.', 'data':'ff 00 00', 'type':'hex', 'port':None, 'baud':600},
-		{'title':'Arduino LEDcontrol: GREEN', 'description':'Turn LEDs green.', 'data':'00 ff 00', 'type':'hex', 'port':None, 'baud':600},
-		{'title':'Arduino LEDcontrol: BLUE', 'description':'Turn LEDs blue.', 'data':'00 00 ff', 'type':'hex', 'port':None, 'baud':600},
-
-		{'title':'NEC Projector: ON', 'description':'Turn projector on.', 'data':'02 00 00 00 00 02', 'type':'hex', 'port':None, 'baud':38400},
-		{'title':'NEC Projector: OFF', 'description':'Turn projector off.', 'data':'02 01 00 00 00 03', 'type':'hex', 'port':None, 'baud':38400},
-
-		{'title':'BENQ Projector: ON', 'description':'Turn projector on.', 'data':'0d 2a 70 6f 77 3d 6f 6e 23 0d', 'type':'hex', 'port':None, 'baud':115200},
-		{'title':'BENQ Projector: OFF', 'description':'Turn projector off.', 'data':'0d 2a 70 6f 77 3d 6f 66 66 23 0d', 'type':'hex', 'port':None, 'baud':115200},
-
-		{'title':'PANASONIC Projector: ON', 'description':'Turn projector on.', 'data':'02 41 44 5a 5a 3b 50 4f 4e 03', 'type':'hex', 'port':None, 'baud':9600},
-		{'title':'PANASONIC Projector: OFF', 'description':'Turn projector off.', 'data':'02 41 44 5a 5a 3b 50 4f 46 03', 'type':'hex', 'port':None, 'baud':9600},
-
-		{'title':'OPTOMA Projector: ON', 'description':'Turn projector on.', 'data':'7e 30 30 30 30 20 31', 'type':'hex', 'port':None, 'baud':9600},
-		{'title':'OPTOMA Projector: OFF', 'description':'Turn projector off.', 'data':'7e 30 30 30 30 20 32', 'type':'hex', 'port':None, 'baud':9600},
-	]
+	commands = []
 
 	def __init__(self, args):
 		super(SerialCommanderMainWindow, self).__init__()
@@ -259,17 +242,14 @@ class SerialCommanderMainWindow(QMainWindow):
 		# Window Content
 		hbox = QHBoxLayout()
 
-		self.textField = QTextEdit()
-		font = QFontDatabase.systemFont(QFontDatabase.FixedFont)
-		font.setPointSize(14)
-		self.textField.setFont(font)
+		self.controlFrame = QWidget()
 		self.listBox = QListWidget()
 		self.listBox.itemActivated.connect(self.OnSendCommand)
-		#self.listBox.currentTextChanged.connect(self.OnCommandChanged)
+		self.listBox.currentTextChanged.connect(self.UpdateStatusBarText)
 
 		splitter = QSplitter(Qt.Horizontal)
 		splitter.addWidget(self.listBox)
-		splitter.addWidget(self.textField)
+		splitter.addWidget(self.controlFrame)
 		splitter.setStretchFactor(1, 2)
 
 		hbox.addWidget(splitter)
@@ -308,15 +288,51 @@ class SerialCommanderMainWindow(QMainWindow):
 		# Load Settings
 		self.LoadSettings(self.configPath, True)
 
+		# Show Donation Note
+		self.statusBar.showMessage("If you like SerialCommander please consider making a donation to support further development ("+self.PRODUCT_WEBSITE+").")
+
 	def UpdatePortAndBaudText(self):
 		self.portAction.setText('Port: '+str(self.serialPort))
 		self.baudAction.setText('Baud: '+str(self.serialBaud))
 
+	def UpdateStatusBarText(self):
+		text = ''
+		if(len(self.listBox.selectedItems()) != 0):
+			command = self.commands[self.listBox.currentRow()]
+			if('description' in command): text = command['description']
+		self.statusBar.showMessage(text)
+
 	def RefreshCommandList(self):
+		# Update Listbox
 		self.listBox.clear()
 		for command in self.commands: self.listBox.addItem(command['title'])
 		self.listBox.setCurrentRow(0)
+
+		# Update Tray Icon
 		self.trayIcon.CreateMenuItems(self)
+
+		# Update Button Layout
+		for i in reversed(self.controlFrame.findChildren(QPushButton)):
+			i.deleteLater()
+		for command in self.commands:
+			try:
+				if(not 'button' in command or command['button'] == None): continue
+				commandButton = command['button']
+				if(not 'x' in commandButton or not 'y' in commandButton): continue
+				if(not 'w' in commandButton or not 'h' in commandButton): continue
+				btn = QPushButton(commandButton['text'] if 'text' in commandButton else '')
+				btn.setParent(self.controlFrame)
+				btn.resize(int(commandButton['w']), int(commandButton['h']))
+				btn.move(int(commandButton['x']), int(commandButton['y']))
+				btn.clicked.connect(partial(self.SendCommand, command))
+				if('icon' in commandButton):
+					try:
+						pixmap = QPixmap()
+						pixmap.loadFromData(QByteArray.fromBase64(str.encode(commandButton['icon'])))
+						btn.setIcon(QIcon(pixmap))
+					except Exception as e: print(str(e))
+				btn.show()
+			except Exception as e: print(str(e))
 
 	def OnAddCommand(self):
 		msg = QMessageBox()
@@ -361,8 +377,12 @@ class SerialCommanderMainWindow(QMainWindow):
 			if(not self.SetupConnection(targetPort, targetBaud)): return
 		try:
 			if(command['type'] == 'hex'):
-				print('Send(HEX): '+command['data'].replace(' ', ''))
-				self.serialConn.write(bytearray.fromhex(command['data'].replace(' ', '')))
+				cleanedData = command['data'].replace(' ', '')
+				print('Send(HEX): '+cleanedData)
+				self.serialConn.write(bytearray.fromhex(cleanedData))
+
+				if(type(self.statusBar) == QStatusBar):
+					self.statusBar.showMessage(str(targetPort)+' @ '+str(targetBaud)+'  =(hex)=>  '+cleanedData)
 		except Exception as e:
 			msg = QMessageBox()
 			msg.setIcon(QMessageBox.Critical)

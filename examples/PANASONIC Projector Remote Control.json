@@ -1,0 +1,40 @@
+{
+    "DEFAULT": {
+        "port": "/dev/ttyUSB0",
+        "baud": 9600
+    },
+    "COMMANDS": [
+        {
+            "title": "PANASONIC Projector: ON",
+            "description": "Turn projector on.",
+            "data": "02 41 44 5a 5a 3b 50 4f 4e 03",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0,
+                "y": 0,
+                "w": 80,
+                "h": 25,
+                "text": "ON",
+                "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXptMCA4Yy0xLjY2IDAtMy0xLjM0LTMtM3MxLjM0LTMgMy0zIDMgMS4zNCAzIDMtMS4zNCAzLTMgM3oiLz48L3N2Zz4="
+            }
+        },
+        {
+            "title": "PANASONIC Projector: OFF",
+            "description": "Turn projector off.",
+            "data": "02 41 44 5a 5a 3b 50 4f 46 03",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 80,
+                "y": 0,
+                "w": 80,
+                "h": 25,
+                "text": "OFF",
+                "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXpNNyAxNWMtMS42NiAwLTMtMS4zNC0zLTNzMS4zNC0zIDMtMyAzIDEuMzQgMyAzLTEuMzQgMy0zIDN6Ii8+PC9zdmc+"
+            }
+        }
+    ]
+}

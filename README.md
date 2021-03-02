@@ -1,6 +1,11 @@
 # SerialCommander
 Send pre-defined commands over your serial (RS232) port to control devices like digital projectors, arduinos etc.
 
+## How To Use
+1. Download and install the `.deb` (recommended) or `.appimage` (for Linux), `.dmg` (for macOS) or `.exe` (for Windows) package from the [latest release](https://github.com/schorschii/sixleds/releases) on Github.
+2. You can now start the GUI by executing the platform-specific executable. The `.deb` package installs a shortcut to the program in your start menu.
+3. Load a config file (see `examples` directory). Please use a text editor to add or modify commands (the config is a simple `.json` format).
+
 ## Contributions
 Please tell me if the example commands are working if you have an appropriate projector to test it. I would also be happy if you add some new examples.
 
