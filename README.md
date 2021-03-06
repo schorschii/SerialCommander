@@ -12,7 +12,7 @@ Please tell me if the example commands are working if you have an appropriate pr
 | Projector | Successfully tested? |
 | --------- | -------------------- |
 | Acer      |                      |
-| BenQ      |                      |
+| BenQ      |  ✓                   |
 | Optoma    |                      |
 | NEC       |  ✓                   |
 | Panasonic |                      |
@@ -26,7 +26,7 @@ Please tell me if the example commands are working if you have an appropriate pr
 - Optoma:
   - https://www.optoma.de/uploads/RS232/DS309-RS232-en.pdf
 - NEC:
-  - http://www.support.nec-display.com/dl_service/data/manual/english/NP215_manual_E2.pdf
+  - https://www.sharpnecdisplays.eu/p/download/v/5e14a015e26cacae3ae64a422f7f8af4/cp/Products/Projectors/Shared/CommandLists/PDF-ExternalControlManual-english.pdf?fn=ExternalControlManual-english.pdf
 - Panasonic:
   - https://na.panasonic.com/ns/9802_PT-RZ470RW430PT-FRZ370C__FRW330C.pdf
   - https://na.panasonic.com/ns/262931_vmz50_command_en_ja_cn.pdf
