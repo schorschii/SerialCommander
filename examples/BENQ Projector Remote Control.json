@@ -12,10 +12,8 @@
             "port": null,
             "baud": 115200,
             "button": {
-                "x": 0,
-                "y": 0,
-                "w": 80,
-                "h": 25,
+                "x": 0, "y": 0,
+                "w": 150, "h": 45,
                 "text": "ON",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXptMCA4Yy0xLjY2IDAtMy0xLjM0LTMtM3MxLjM0LTMgMy0zIDMgMS4zNCAzIDMtMS4zNCAzLTMgM3oiLz48L3N2Zz4="
             }
@@ -28,12 +26,336 @@
             "port": null,
             "baud": 115200,
             "button": {
-                "x": 80,
-                "y": 0,
-                "w": 80,
-                "h": 25,
+                "x": 150, "y": 0,
+                "w": 150, "h": 45,
                 "text": "OFF",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXpNNyAxNWMtMS42NiAwLTMtMS4zNC0zLTNzMS4zNC0zIDMtMyAzIDEuMzQgMyAzLTEuMzQgMy0zIDN6Ii8+PC9zdmc+"
+            }
+        },
+
+        {
+            "title": "BENQ Projector: VGA 1",
+            "description": "Switch to VGA 1 source.",
+            "data": "0d 2a 73 6f 75 72 3d 52 47 42 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 0, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VGA1",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: VGA 2",
+            "description": "Switch to VGA 2 source.",
+            "data": "0d 2a 73 6f 75 72 3d 52 47 42 32 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 75, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VGA2",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Component",
+            "description": "Switch to Component source.",
+            "data": "0d 2a 73 6f 75 72 3d 79 70 62 72 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 150, "y": 50,
+                "w": 75, "h": 25,
+                "text": "COMPO",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Network",
+            "description": "Switch to Network source.",
+            "data": "0d 2a 73 6f 75 72 3d 6e 65 74 77 6f 72 6b 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 225, "y": 50,
+                "w": 75, "h": 25,
+                "text": "NET",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: HDMI 1",
+            "description": "Switch to HDMI 1 source.",
+            "data": "0d 2a 73 6f 75 72 3d 68 64 6d 69 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 0, "y": 75,
+                "w": 75, "h": 25,
+                "text": "HDMI1",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: HDMI 2",
+            "description": "Switch to HDMI 2 source.",
+            "data": "0d 2a 73 6f 75 72 3d 68 64 6d 69 32 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 75, "y": 75,
+                "w": 75, "h": 25,
+                "text": "HDMI2",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: DVI-A",
+            "description": "Switch to DVI-A source.",
+            "data": "0d 2a 73 6f 75 72 3d 64 76 69 41 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 150, "y": 75,
+                "w": 75, "h": 25,
+                "text": "DVI-A",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: DVI-D",
+            "description": "Switch to DVI-D source.",
+            "data": "0d 2a 73 6f 75 72 3d 64 76 69 64 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 225, "y": 75,
+                "w": 75, "h": 25,
+                "text": "DVI-D",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "BENQ Projector: Picture Mute On",
+            "description": "",
+            "data": "0d 2a 62 6c 61 6e 6b 3d 6f 6e 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 0, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Picture Mute Off",
+            "description": "",
+            "data": "0d 2a 62 6c 61 6e 6b 3d 6f 66 66 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 75, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK OFF",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Freeze On",
+            "description": "",
+            "data": "0d 2a 66 72 65 65 7a 65 3d 6f 6e 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 150, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Freeze Off",
+            "description": "",
+            "data": "0d 2a 66 72 65 65 7a 65 3d 6f 66 66 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 225, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE OFF",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "BENQ Projector: Sound Mute On",
+            "description": "",
+            "data": "0d 2a 6d 75 74 65 3d 6f 6e 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 0, "y": 130,
+                "w": 75, "h": 25,
+                "text": "MUTE ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Sound Mute Off",
+            "description": "",
+            "data": "0d 2a 6d 75 74 65 3d 6f 66 66 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 75, "y": 130,
+                "w": 75, "h": 25,
+                "text": "MUTE OFF",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Volume Up",
+            "description": "",
+            "data": "0d 3e 2a 76 6f 6c 3d 2b 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 150, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL +",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Volume Down",
+            "description": "",
+            "data": "0d 3e 2a 76 6f 6c 3d 2d 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 225, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL -",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "BENQ Projector: Menu",
+            "description": "",
+            "data": "0d 2a 6d 65 6e 75 3d 6f 6e 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 0, "y": 160,
+                "w": 75, "h": 50,
+                "text": "☰",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Up",
+            "description": "",
+            "data": "0d 2a 75 70 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 75, "y": 160,
+                "w": 75, "h": 50,
+                "text": "↑",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Exit",
+            "description": "",
+            "data": "0d 2a 6d 65 6e 75 3d 6f 66 66 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 150, "y": 160,
+                "w": 75, "h": 50,
+                "text": "×",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Left",
+            "description": "",
+            "data": "0d 2a 6c 65 66 74 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 0, "y": 210,
+                "w": 75, "h": 50,
+                "text": "←",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Enter",
+            "description": "",
+            "data": "0d 2a 65 6e 74 65 72 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 75, "y": 210,
+                "w": 75, "h": 50,
+                "text": "↲",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Right",
+            "description": "",
+            "data": "0d 2a 72 69 67 68 74 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 150, "y": 210,
+                "w": 75, "h": 50,
+                "text": "→",
+                "icon": ""
+            }
+        },
+        {
+            "title": "BENQ Projector: Down",
+            "description": "",
+            "data": "0d 2a 64 6f 77 6e 23 0d",
+            "type": "hex",
+            "port": null,
+            "baud": 115200,
+            "button": {
+                "x": 75, "y": 260,
+                "w": 75, "h": 50,
+                "text": "↓",
+                "icon": ""
             }
         }
     ]

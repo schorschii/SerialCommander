@@ -12,10 +12,8 @@
             "port": null,
             "baud": 38400,
             "button": {
-                "x": 0,
-                "y": 0,
-                "w": 80,
-                "h": 25,
+                "x": 0, "y": 0,
+                "w": 150, "h": 45,
                 "text": "ON",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXptMCA4Yy0xLjY2IDAtMy0xLjM0LTMtM3MxLjM0LTMgMy0zIDMgMS4zNCAzIDMtMS4zNCAzLTMgM3oiLz48L3N2Zz4="
             }
@@ -28,12 +26,336 @@
             "port": null,
             "baud": 38400,
             "button": {
-                "x": 80,
-                "y": 0,
-                "w": 80,
-                "h": 25,
+                "x": 150, "y": 0,
+                "w": 150, "h": 45,
                 "text": "OFF",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXpNNyAxNWMtMS42NiAwLTMtMS4zNC0zLTNzMS4zNC0zIDMtMyAzIDEuMzQgMyAzLTEuMzQgMy0zIDN6Ii8+PC9zdmc+"
+            }
+        },
+
+        {
+            "title": "NEC Projector: VGA 1",
+            "description": "Switch to VGA 1 source.",
+            "data": "02 03 00 00 02 01 01  09",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 0, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VGA1",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: VGA 2",
+            "description": "Switch to VGA 2 source.",
+            "data": "02 03 00 00 02 01 02  0a",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 75, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VGA2",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Analog Video",
+            "description": "Switch to analog video source.",
+            "data": "02 03 00 00 02 01 06  0e",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 150, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VIDEO",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Analog S-Video",
+            "description": "Switch to analog S-Video source.",
+            "data": "02 03 00 00 02 01 0b  13",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 225, "y": 50,
+                "w": 75, "h": 25,
+                "text": "S-VIDEO",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: HDMI 1",
+            "description": "Switch to HDMI 1 source.",
+            "data": "02 03 00 00 02 01 a1  a9",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 0, "y": 75,
+                "w": 75, "h": 25,
+                "text": "HDMI1",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: HDMI 2",
+            "description": "Switch to HDMI 2 source.",
+            "data": "02 03 00 00 02 01 a2  aa",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 75, "y": 75,
+                "w": 75, "h": 25,
+                "text": "HDMI2",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: DP",
+            "description": "Switch to DP source.",
+            "data": "02 03 00 00 02 01 a6  ae",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 150, "y": 75,
+                "w": 75, "h": 25,
+                "text": "DP",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: USB",
+            "description": "Switch to USB source.",
+            "data": "02 03 00 00 02 01 1f  27",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 225, "y": 75,
+                "w": 75, "h": 25,
+                "text": "USB",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "NEC Projector: Picture Mute On",
+            "description": "",
+            "data": "02 10 00 00 00 12",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 0, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Picture Mute Off",
+            "description": "",
+            "data": "02 11 00 00 00 13",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 75, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK OFF",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Freeze On",
+            "description": "",
+            "data": "01 98 00 00 01 01 9b",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 150, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Freeze Off",
+            "description": "",
+            "data": "01 98 00 00 01 02 9c",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 225, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE OFF",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "NEC Projector: Sound Mute On",
+            "description": "",
+            "data": "02 12 00 00 00 14",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 0, "y": 130,
+                "w": 75, "h": 25,
+                "text": "MUTE ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Sound Mute Off",
+            "description": "",
+            "data": "02 13 00 00 00 15",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 75, "y": 130,
+                "w": 75, "h": 25,
+                "text": "MUTE OFF",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Volume Up",
+            "description": "",
+            "data": "03 10 00 00 05 05 00 01 01 00  1f",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 150, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL +",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Volume Down",
+            "description": "",
+            "data": "03 10 00 00 05 05 00 01 ff ff  1c",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 225, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL -",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "NEC Projector: Menu",
+            "description": "",
+            "data": "02 0f 00 00 02 06 00  19",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 0, "y": 160,
+                "w": 75, "h": 50,
+                "text": "☰",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Up",
+            "description": "",
+            "data": "02 0f 00 00 02 07 00  1a",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 75, "y": 160,
+                "w": 75, "h": 50,
+                "text": "↑",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Exit",
+            "description": "",
+            "data": "02 0f 00 00 02 0c 00  1f",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 150, "y": 160,
+                "w": 75, "h": 50,
+                "text": "×",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Left",
+            "description": "",
+            "data": "02 0f 00 00 02 0a 00  1d",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 0, "y": 210,
+                "w": 75, "h": 50,
+                "text": "←",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Enter",
+            "description": "",
+            "data": "02 0f 00 00 02 0b 00  1e",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 75, "y": 210,
+                "w": 75, "h": 50,
+                "text": "↲",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Right",
+            "description": "",
+            "data": "02 0f 00 00 02 09 00  1c",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 150, "y": 210,
+                "w": 75, "h": 50,
+                "text": "→",
+                "icon": ""
+            }
+        },
+        {
+            "title": "NEC Projector: Down",
+            "description": "",
+            "data": "02 0f 00 00 02 08 00  1b",
+            "type": "hex",
+            "port": null,
+            "baud": 38400,
+            "button": {
+                "x": 75, "y": 260,
+                "w": 75, "h": 50,
+                "text": "↓",
+                "icon": ""
             }
         }
     ]
