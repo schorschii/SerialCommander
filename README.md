@@ -12,9 +12,9 @@ Please tell me if the example commands are working if you have an appropriate pr
 | Projector | Successfully tested? |
 | --------- | -------------------- |
 | Acer      |                      |
-| BenQ      |  ✓                   |
+| BenQ      | ✓                    |
 | Optoma    |                      |
-| NEC       |  ✓                   |
+| NEC       | ✓                    |
 | Panasonic |                      |
 | ViewSonic |                      |
 
