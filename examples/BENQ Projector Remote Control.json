@@ -234,7 +234,7 @@
         {
             "title": "BENQ Projector: Volume Up",
             "description": "",
-            "data": "0d 3e 2a 76 6f 6c 3d 2b 23 0d",
+            "data": "0d 2a 76 6f 6c 3d 2b 23 0d",
             "type": "hex",
             "port": null,
             "baud": 115200,
@@ -248,7 +248,7 @@
         {
             "title": "BENQ Projector: Volume Down",
             "description": "",
-            "data": "0d 3e 2a 76 6f 6c 3d 2d 23 0d",
+            "data": "0d 2a 76 6f 6c 3d 2d 23 0d",
             "type": "hex",
             "port": null,
             "baud": 115200,
