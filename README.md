@@ -13,6 +13,7 @@ Please tell me if the example commands are working if you have an appropriate pr
 | --------- | -------------------- |
 | Acer      |                      |
 | BenQ      | ✓                    |
+| Epson     | ✓                    |
 | Optoma    |                      |
 | NEC       | ✓                    |
 | Panasonic |                      |
@@ -23,6 +24,9 @@ Please tell me if the example commands are working if you have an appropriate pr
   - https://global-download.acer.com/GDFiles/Document/User%20Manual/User%20Manual_Acer_1.0_A_A.zip?acerid=635303766533286084&Step1=PROJECTOR&Step2=P%20SERIES&Step3=P1283&OS=ALL&LC=en&BC=ACER&SC=PA_6
 - BenQ:
   - https://benqimage.blob.core.windows.net/driver-us-file/RS232-commands_all%20Product%20Lines.pdf
+- Epson:
+  - ftp://download.epson-europe.com/pub/download/3211/epson321113eu.pdf
+  - https://download.epson-europe.com/pub/download/3772/epson377222eu.XLSX
 - Optoma:
   - https://www.optoma.de/uploads/RS232/DS309-RS232-en.pdf
 - NEC:
