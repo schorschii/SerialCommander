@@ -7,15 +7,13 @@
         {
             "title": "OPTOMA Projector: ON",
             "description": "Turn projector on.",
-            "data": "7e 30 30 30 30 20 31",
+            "data": "7E 30 30 30 30 20 31 0D",
             "type": "hex",
             "port": null,
             "baud": 9600,
             "button": {
-                "x": 0,
-                "y": 0,
-                "w": 80,
-                "h": 25,
+                "x": 0, "y": 0,
+                "w": 150, "h": 45,
                 "text": "ON",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXptMCA4Yy0xLjY2IDAtMy0xLjM0LTMtM3MxLjM0LTMgMy0zIDMgMS4zNCAzIDMtMS4zNCAzLTMgM3oiLz48L3N2Zz4="
             }
@@ -23,17 +21,327 @@
         {
             "title": "OPTOMA Projector: OFF",
             "description": "Turn projector off.",
-            "data": "7e 30 30 30 30 20 32",
+            "data": "7E 30 30 30 30 20 30 0D",
             "type": "hex",
             "port": null,
             "baud": 9600,
             "button": {
-                "x": 80,
-                "y": 0,
-                "w": 80,
-                "h": 25,
+				"x": 150, "y": 0,
+                "w": 150, "h": 45,
                 "text": "OFF",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXpNNyAxNWMtMS42NiAwLTMtMS4zNC0zLTNzMS4zNC0zIDMtMyAzIDEuMzQgMyAzLTEuMzQgMy0zIDN6Ii8+PC9zdmc+"
+            }
+        },
+
+        {
+            "title": "OPTOMA Projector: VGA 1",
+            "description": "Switch to VGA 1 source.",
+            "data": "7E 30 30 31 32 20 35 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VGA1",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: VGA 2",
+            "description": "Switch to VGA 2 source.",
+            "data": "7E 30 30 31 32 20 36 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VGA2",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Analog Video",
+            "description": "Switch to analog video source.",
+            "data": "7E 30 30 31 32 20 31 30 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 50,
+                "w": 75, "h": 25,
+                "text": "VIDEO",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Analog S-Video",
+            "description": "Switch to analog S-Video source.",
+            "data": "7E 30 30 31 32 20 39 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 225, "y": 50,
+                "w": 75, "h": 25,
+                "text": "S-VIDEO",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: HDMI",
+            "description": "Switch to HDMI source.",
+            "data": "7E 30 30 31 32 20 31 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 75,
+                "w": 75, "h": 25,
+                "text": "HDMI",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: DVI-I",
+            "description": "Switch to DVI-I source.",
+            "data": "7E 30 30 31 32 20 33 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 75,
+                "w": 75, "h": 25,
+                "text": "DVI-I",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Network",
+            "description": "Switch to Network source.",
+            "data": "7E 30 30 31 32 20 31 38 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 75,
+                "w": 75, "h": 25,
+                "text": "NET",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: USB",
+            "description": "Switch to USB source.",
+            "data": "7E 30 30 31 32 20 31 39 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 225, "y": 75,
+                "w": 75, "h": 25,
+                "text": "USB",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "OPTOMA Projector: Picture Mute On",
+            "description": "",
+            "data": "7E 30 30 30 32 20 31 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Picture Mute Off",
+            "description": "",
+            "data": "7E 30 30 30 32 20 30 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK OFF",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Freeze On",
+            "description": "",
+            "data": "7E 30 30 30 34 20 31 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Freeze Off",
+            "description": "",
+            "data": "7E 30 30 30 34 20 30 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 225, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE OFF",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "OPTOMA Projector: Sound Mute On",
+            "description": "",
+            "data": "7E 30 30 30 33 20 31 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 130,
+                "w": 75, "h": 25,
+                "text": "MUTE ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Sound Mute Off",
+            "description": "",
+            "data": "7E 30 30 30 33 20 30 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 130,
+                "w": 75, "h": 25,
+                "text": "MUTE OFF",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Volume Up",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 31 38 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL +",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Volume Down",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 31 37 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 225, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL -",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "OPTOMA Projector: Menu",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 32 30 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 160,
+                "w": 75, "h": 50,
+                "text": "☰",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Up",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 31 30 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 160,
+                "w": 75, "h": 50,
+                "text": "↑",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Left",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 31 31 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 210,
+                "w": 75, "h": 50,
+                "text": "←",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Enter",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 31 32 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 210,
+                "w": 75, "h": 50,
+                "text": "↲",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Right",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 31 33 0D",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 210,
+                "w": 75, "h": 50,
+                "text": "→",
+                "icon": ""
+            }
+        },
+        {
+            "title": "OPTOMA Projector: Down",
+            "description": "",
+            "data": "7E 30 30 31 34 30 20 31 34 0D ",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 260,
+                "w": 75, "h": 50,
+                "text": "↓",
+                "icon": ""
             }
         }
     ]

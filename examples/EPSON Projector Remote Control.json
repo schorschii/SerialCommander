@@ -13,7 +13,7 @@
             "baud": 9600,
             "button": {
                 "x": 0, "y": 0,
-                "w": 80, "h": 25,
+                "w": 150, "h": 45,
                 "text": "ON",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXptMCA4Yy0xLjY2IDAtMy0xLjM0LTMtM3MxLjM0LTMgMy0zIDMgMS4zNCAzIDMtMS4zNCAzLTMgM3oiLz48L3N2Zz4="
             }
@@ -26,10 +26,252 @@
             "port": null,
             "baud": 9600,
             "button": {
-                "x": 80, "y": 0,
-                "w": 80, "h": 25,
+				"x": 150, "y": 0,
+                "w": 150, "h": 45,
                 "text": "OFF",
                 "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE3IDdIN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNWgxMGMyLjc2IDAgNS0yLjI0IDUtNXMtMi4yNC01LTUtNXpNNyAxNWMtMS42NiAwLTMtMS4zNC0zLTNzMS4zNC0zIDMtMyAzIDEuMzQgMyAzLTEuMzQgMy0zIDN6Ii8+PC9zdmc+"
+            }
+        },
+
+        {
+            "title": "EPSON Projector: Input 1",
+            "description": "Switch to Input 1 source.",
+            "data": "53 4f 55 52 43 45 20 31 30 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 50,
+                "w": 75, "h": 25,
+                "text": "IN 1",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Input 2",
+            "description": "Switch to Input 2 source.",
+            "data": "53 4f 55 52 43 45 20 32 30 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 50,
+                "w": 75, "h": 25,
+                "text": "IN 2",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Input 3",
+            "description": "Switch to Input 3 source.",
+            "data": "53 4f 55 52 43 45 20 33 30 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 225, "y": 50,
+                "w": 75, "h": 25,
+                "text": "IN 3",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Analog Video",
+            "description": "Switch to analog video source.",
+            "data": "53 4f 55 52 43 45 20 34 30 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 50,
+                "w": 75, "h": 25,
+                "text": "IN 4",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "EPSON Projector: Picture Mute On",
+            "description": "",
+            "data": "4d 55 54 45 20 4f 4e 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Picture Mute Off",
+            "description": "",
+            "data": "4d 55 54 45 20 4f 46 46 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 105,
+                "w": 75, "h": 25,
+                "text": "BLACK OFF",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Freeze On",
+            "description": "",
+            "data": "46 52 45 45 5a 45 20 4f 4e 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE ON",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Freeze Off",
+            "description": "",
+            "data": "46 52 45 45 5a 45 20 4f 46 46 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 225, "y": 105,
+                "w": 75, "h": 25,
+                "text": "FREEZE OFF",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "EPSON Projector: Volume Up",
+            "description": "",
+            "data": "4b 45 59 20 35 36 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL +",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Volume Down",
+            "description": "",
+            "data": "4b 45 59 20 35 37 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 225, "y": 130,
+                "w": 75, "h": 25,
+                "text": "VOL -",
+                "icon": ""
+            }
+        },
+
+        {
+            "title": "EPSON Projector: Menu",
+            "description": "",
+            "data": "4b 45 59 20 30 33 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 160,
+                "w": 75, "h": 50,
+                "text": "☰",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Up",
+            "description": "",
+            "data": "4b 45 59 20 33 35 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 160,
+                "w": 75, "h": 50,
+                "text": "↑",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Exit",
+            "description": "",
+            "data": "4b 45 59 20 30 35 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 160,
+                "w": 75, "h": 50,
+                "text": "×",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Left",
+            "description": "",
+            "data": "4b 45 59 20 33 37 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 0, "y": 210,
+                "w": 75, "h": 50,
+                "text": "←",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Enter",
+            "description": "",
+            "data": "4b 45 59 20 31 36 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 210,
+                "w": 75, "h": 50,
+                "text": "↲",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Right",
+            "description": "",
+            "data": "4b 45 59 20 33 38 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 150, "y": 210,
+                "w": 75, "h": 50,
+                "text": "→",
+                "icon": ""
+            }
+        },
+        {
+            "title": "EPSON Projector: Down",
+            "description": "",
+            "data": "4b 45 59 20 33 36 0d 0a",
+            "type": "hex",
+            "port": null,
+            "baud": 9600,
+            "button": {
+                "x": 75, "y": 260,
+                "w": 75, "h": 50,
+                "text": "↓",
+                "icon": ""
             }
         }
     ]
