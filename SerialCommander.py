@@ -278,7 +278,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		toolbar.addAction(self.sendAction)
 
 		# Window Settings
-		self.setMinimumSize(520, 400)
+		self.setMinimumSize(580, 420)
 		self.setWindowTitle(self.PRODUCT_NAME+" v"+self.PRODUCT_VERSION)
 
 		# Tray Icon
