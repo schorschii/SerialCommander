@@ -1,6 +1,9 @@
 # SerialCommander
 Send pre-defined commands over your serial (RS232) port to control devices like digital projectors, arduinos etc.
 
+![screenshot](.github/screenshot.png)
+![screenshot](.github/screenshot2.png)
+
 ## How To Use
 1. Download and install the `.deb` (recommended) or `.appimage` (for Linux), `.dmg` (for macOS) or `.exe` (for Windows) package from the [latest release](https://github.com/schorschii/SerialCommander/releases) on Github.
 2. You can now start the GUI by executing the platform-specific executable. The `.deb` package installs a shortcut to the program in your start menu.
