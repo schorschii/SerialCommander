@@ -11,7 +11,7 @@ Please tell me if the example commands are working if you have an appropriate pr
 
 | Projector | Successfully tested? |
 | --------- | -------------------- |
-| Acer      |                      |
+| Acer      | ✓                    |
 | BenQ      | ✓                    |
 | Epson     | ✓                    |
 | Optoma    |                      |
