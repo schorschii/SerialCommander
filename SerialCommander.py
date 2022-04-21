@@ -15,9 +15,9 @@ import platform
 import serial
 import sys
 
-class SixledsAboutWindow(QDialog):
+class SerialCommanderAboutWindow(QDialog):
 	def __init__(self, *args, **kwargs):
-		super(SixledsAboutWindow, self).__init__(*args, **kwargs)
+		super(SerialCommanderAboutWindow, self).__init__(*args, **kwargs)
 		self.InitUI()
 
 	def InitUI(self):
@@ -422,7 +422,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		self.SaveSettings(fileName)
 
 	def OnOpenAboutDialog(self, e):
-		dlg = SixledsAboutWindow(self)
+		dlg = SerialCommanderAboutWindow(self)
 		dlg.exec_()
 
 	def OnShow(self):
