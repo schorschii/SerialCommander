@@ -37,7 +37,7 @@ class SerialCommanderAboutWindow(QDialog):
 		labelCopyright = QLabel(self)
 		labelCopyright.setText(
 			"<br>"
-			"© 2021 <a href='https://github.com/schorschii'>Georg Sieber</a>"
+			"© 2021-2022 <a href='https://github.com/schorschii'>Georg Sieber</a>"
 			"<br>"
 			"<br>"
 			"GNU General Public License v3.0"
@@ -92,7 +92,7 @@ class SerialCommanderTrayIcon(QSystemTrayIcon):
 
 class SerialCommanderMainWindow(QMainWindow):
 	PRODUCT_NAME      = "SerialCommander"
-	PRODUCT_VERSION   = "0.1.0"
+	PRODUCT_VERSION   = "0.2.0"
 	PRODUCT_WEBSITE   = "https://georg-sieber.de"
 	ICON_BASE64       = b"iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAACdeAAAnXgHPwViOAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABAxJREFUeJztm89LI2cYx7/zTqajCQ0mInMQdik5qIkuDZ6Cp72UUhAvuxTW7gp7rJRC+0e0wrLbi9seSouLRJSiqLB4ixfJHzCK9SClsBeR1NR2m8aZd9JDJm4StuvmnWfmtfT9QEgm75tnnvk+z/tj3nkDKBQKxf8YLUS71LYb/osUSicZgHcA9BUKhcTExMS7nueR2GeMNWzb/qNcLr8E8DeACwAehW0qAVgymRwoFotf5HK5+6lU6gaR3Q7Ozs5+3d/ffzY7O/vN+fl5FQQiUAigJZPJVKlUWslkMh8Q2LuS4+PjncnJyXsAqgjYLBiBP+by8vLnUV08AGQymQ+3trY+Q7PJBYJEgPHx8fsEdnoim83OAegLaicW8PeaZVnmwMDAze6Cer3+V0DbHZimGW8/TqfTNy3LMk9OTjQEaAZBBUA+n48zxjoyiXPuWpZ1C8BZV/X2Pqfb6TeVpSqVys+6rl/6yxjT8/l8fGdnR9R1AAQCvIEqgN/8z615gem/uwAcvLpQDYDh+9MAUEfnuB/WfCVUAToYGRlJLC0tPfU8j52enj6fmZlZQ1MEAIhtbm7eHRoa+ogx5s3NzX16dHT0ZxR+RSaA67r9o6OjnwCAbds1AOtoEyCdTt/OZrP3/LpfAohEAIpR4K3gnLOuz+1prb2mPBIiO9F1RbQJtDoto1qt9v9LnX4AidZBrVa7rOe6ru6Xt7Kgz/+uvW77sPfac/jnjqPZlNo71bdGVABje3v7weDg4G3HcRLdhYwxViqVnsRiMbf1neM4l7O24eHhwu7u7re6rnMA4JzrlmW93ypfWVl5ZBjGRevYdd1Y91ALAAsLC18ZhvGyUqmUpqenn6F5k9QTosNLvFwu/zA2Nvax4O9JOTw8XC0UCg8B9Dz5Eu0DNM/zrk3/4fsiFMxrcxGyUALIdkA2SgDZDshGCSDbAdkoAWQ7IBslgGwHZCMsgKZp5M/pRAnii6gAnuu6v4uelBrfF6HHZKICXKyvr3/HOe/5/psazrmzsbHxPQTWAgDx9QANQGJvb+/HXC53R9AGCQcHBz9NTU09RHMRteemIJoBDQC11dXVr2VmAefcWVtbe4TmQohQPxDkgYP0LAgafSDYMCg1CyiiDwR/5CQtCyiiDwSfCEnJAqroA0Q7RBBxFlBFH6CZCkeaBZTRB+geO0eWBZTRB+huhiLJAuroA7QbD0LPAuroA7S3w6FmQRjRB+i3noSWBWFEH6BfEGkAqBWLxcfEduHbJI0+EM6KkGfb9gtqo75Nkv3B7YSyJMYYI18tCsMmoNYElQBKANkOyCYUAUzT5P8Fm0B4e3CN+fn59+r1un511asxTZMvLi7+glc7S8kI809TlPYbXe8KhUKhoOAfZeezVYbuDMMAAAAASUVORK5CYII="
 	ICON_BYTES        = QByteArray.fromBase64(ICON_BASE64)
