@@ -53,7 +53,6 @@ class SerialCommanderAboutWindow(QDialog):
 		labelDescription.setText(
 			'SerialCommander GUI allows you to send pre-defined commands over a serial port, e.g. to control digital projectors or to communicate with your arduino.'
 		)
-		labelDescription.setStyleSheet('opacity:0.8')
 		labelDescription.setFixedWidth(350)
 		labelDescription.setWordWrap(True)
 		self.layout.addWidget(labelDescription)
@@ -207,7 +206,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		fileMenu.addAction(selectPortAction)
 
 		fileMenu.addSeparator()
-		addCommandAction = QAction('&Send Command...', self)
+		addCommandAction = QAction('&Send Selected Command', self)
 		addCommandAction.setShortcut('F2')
 		addCommandAction.triggered.connect(self.OnSendCommand)
 		fileMenu.addAction(addCommandAction)
@@ -351,7 +350,7 @@ class SerialCommanderMainWindow(QMainWindow):
 		msg = QMessageBox()
 		msg.setIcon(QMessageBox.Information)
 		msg.setWindowTitle('Not implemented')
-		msg.setText('Please use a text editor to edit »~/.SerialCommander.json« in order to add or modify commands.')
+		msg.setText('Please use a text editor to edit the file in order to add or modify commands.')
 		msg.setDetailedText('You think this sucks? Just make a pull request :-)')
 		msg.setStandardButtons(QMessageBox.Ok)
 		retval = msg.exec_()
