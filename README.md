@@ -5,8 +5,8 @@ Send pre-defined commands over your serial (RS232) port to control devices like 
 ![screenshot](.github/screenshot2.png)
 
 ## How To Use
-1. Download and install the `.deb` (recommended) or `.appimage` (for Linux), `.dmg` (for macOS) or `.exe` (for Windows) package from the [latest release](https://github.com/schorschii/SerialCommander/releases) on Github.
-2. You can now start the GUI by executing the platform-specific executable. The `.deb` package installs a shortcut to the program in your start menu.
+1. Download and install the `.deb` (for Linux) or `.exe` (for Windows) package from the [latest release](https://github.com/schorschii/SerialCommander/releases) on Github.
+2. Start the program from your start menu.
 3. Load a config file (see `examples` directory). Please use a text editor to add or modify commands (the config is a simple `.json` format).
 
 ## Contributions

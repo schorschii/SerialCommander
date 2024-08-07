@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SerialCommander
+Exec=/usr/share/SerialCommander/SerialCommander.py
+Terminal=false
+Icon=/usr/share/pixmaps/SerialCommander/icon.svg
+Categories=Application;Utility
+Comment=Send pre-defined commands over your serial (RS232) port to control devices like digital projectors.

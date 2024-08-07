@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SerialCommander Autostart
+Exec=/usr/share/SerialCommander/SerialCommander.py --hidden
+Icon=/usr/share/pixmaps/SerialCommander/icon.svg
+Terminal=false
+Type=Application
+
