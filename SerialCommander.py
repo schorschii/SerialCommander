@@ -29,21 +29,21 @@ class SerialCommanderAboutWindow(QDialog):
 		self.layout = QVBoxLayout(self)
 
 		labelAppName = QLabel(self)
-		labelAppName.setText(self.parentWidget().PRODUCT_NAME + " v" + self.parentWidget().PRODUCT_VERSION)
-		labelAppName.setStyleSheet("font-weight:bold")
+		labelAppName.setText(self.parentWidget().PRODUCT_NAME + ' v' + self.parentWidget().PRODUCT_VERSION)
+		labelAppName.setStyleSheet('font-weight:bold')
 		labelAppName.setAlignment(Qt.AlignCenter)
 		self.layout.addWidget(labelAppName)
 
 		labelCopyright = QLabel(self)
 		labelCopyright.setText(
-			"<br>"
-			"© 2021-2022 <a href='https://github.com/schorschii'>Georg Sieber</a>"
-			"<br>"
-			"<br>"
-			"GNU General Public License v3.0"
-			"<br>"
-			"<a href='"+self.parentWidget().PRODUCT_WEBSITE+"'>"+self.parentWidget().PRODUCT_WEBSITE+"</a>"
-			"<br>"
+			'<br>'
+			'© 2021-2024 <a href="https://github.com/schorschii">Georg Sieber</a>'
+			'<br>'
+			'<br>'
+			'GNU General Public License v3.0'
+			'<br>'
+			'<a href="'+self.parentWidget().PRODUCT_WEBSITE+'">'+self.parentWidget().PRODUCT_WEBSITE+'</a>'
+			'<br>'
 		)
 		labelCopyright.setOpenExternalLinks(True)
 		labelCopyright.setAlignment(Qt.AlignCenter)
@@ -51,9 +51,9 @@ class SerialCommanderAboutWindow(QDialog):
 
 		labelDescription = QLabel(self)
 		labelDescription.setText(
-			"""SerialCommander GUI allows you to send pre-defined commands over a serial port, e.g. to control digital projectors or to communicate with your arduino."""
+			'SerialCommander GUI allows you to send pre-defined commands over a serial port, e.g. to control digital projectors or to communicate with your arduino.'
 		)
-		labelDescription.setStyleSheet("opacity:0.8")
+		labelDescription.setStyleSheet('opacity:0.8')
 		labelDescription.setFixedWidth(350)
 		labelDescription.setWordWrap(True)
 		self.layout.addWidget(labelDescription)
@@ -61,7 +61,7 @@ class SerialCommanderAboutWindow(QDialog):
 		self.layout.addWidget(self.buttonBox)
 
 		self.setLayout(self.layout)
-		self.setWindowTitle("About")
+		self.setWindowTitle('About')
 
 class SerialCommanderTrayIcon(QSystemTrayIcon):
 	trayMenu = None
@@ -91,9 +91,9 @@ class SerialCommanderTrayIcon(QSystemTrayIcon):
 		self.setContextMenu(self.trayMenu)
 
 class SerialCommanderMainWindow(QMainWindow):
-	PRODUCT_NAME      = "SerialCommander"
-	PRODUCT_VERSION   = "0.2.0"
-	PRODUCT_WEBSITE   = "https://georg-sieber.de"
+	PRODUCT_NAME      = 'SerialCommander'
+	PRODUCT_VERSION   = '0.2.0'
+	PRODUCT_WEBSITE   = 'https://georg-sieber.de'
 	ICON_BASE64       = b"iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAACdeAAAnXgHPwViOAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABAxJREFUeJztm89LI2cYx7/zTqajCQ0mInMQdik5qIkuDZ6Cp72UUhAvuxTW7gp7rJRC+0e0wrLbi9seSouLRJSiqLB4ixfJHzCK9SClsBeR1NR2m8aZd9JDJm4StuvmnWfmtfT9QEgm75tnnvk+z/tj3nkDKBQKxf8YLUS71LYb/osUSicZgHcA9BUKhcTExMS7nueR2GeMNWzb/qNcLr8E8DeACwAehW0qAVgymRwoFotf5HK5+6lU6gaR3Q7Ozs5+3d/ffzY7O/vN+fl5FQQiUAigJZPJVKlUWslkMh8Q2LuS4+PjncnJyXsAqgjYLBiBP+by8vLnUV08AGQymQ+3trY+Q7PJBYJEgPHx8fsEdnoim83OAegLaicW8PeaZVnmwMDAze6Cer3+V0DbHZimGW8/TqfTNy3LMk9OTjQEaAZBBUA+n48zxjoyiXPuWpZ1C8BZV/X2Pqfb6TeVpSqVys+6rl/6yxjT8/l8fGdnR9R1AAQCvIEqgN/8z615gem/uwAcvLpQDYDh+9MAUEfnuB/WfCVUAToYGRlJLC0tPfU8j52enj6fmZlZQ1MEAIhtbm7eHRoa+ogx5s3NzX16dHT0ZxR+RSaA67r9o6OjnwCAbds1AOtoEyCdTt/OZrP3/LpfAohEAIpR4K3gnLOuz+1prb2mPBIiO9F1RbQJtDoto1qt9v9LnX4AidZBrVa7rOe6ru6Xt7Kgz/+uvW77sPfac/jnjqPZlNo71bdGVABje3v7weDg4G3HcRLdhYwxViqVnsRiMbf1neM4l7O24eHhwu7u7re6rnMA4JzrlmW93ypfWVl5ZBjGRevYdd1Y91ALAAsLC18ZhvGyUqmUpqenn6F5k9QTosNLvFwu/zA2Nvax4O9JOTw8XC0UCg8B9Dz5Eu0DNM/zrk3/4fsiFMxrcxGyUALIdkA2SgDZDshGCSDbAdkoAWQ7IBslgGwHZCMsgKZp5M/pRAnii6gAnuu6v4uelBrfF6HHZKICXKyvr3/HOe/5/psazrmzsbHxPQTWAgDx9QANQGJvb+/HXC53R9AGCQcHBz9NTU09RHMRteemIJoBDQC11dXVr2VmAefcWVtbe4TmQohQPxDkgYP0LAgafSDYMCg1CyiiDwR/5CQtCyiiDwSfCEnJAqroA0Q7RBBxFlBFH6CZCkeaBZTRB+geO0eWBZTRB+huhiLJAuroA7QbD0LPAuroA7S3w6FmQRjRB+i3noSWBWFEH6BfEGkAqBWLxcfEduHbJI0+EM6KkGfb9gtqo75Nkv3B7YSyJMYYI18tCsMmoNYElQBKANkOyCYUAUzT5P8Fm0B4e3CN+fn59+r1un511asxTZMvLi7+glc7S8kI809TlPYbXe8KhUKhoOAfZeezVYbuDMMAAAAASUVORK5CYII="
 	ICON_BYTES        = QByteArray.fromBase64(ICON_BASE64)
 
@@ -289,7 +289,7 @@ class SerialCommanderMainWindow(QMainWindow):
 
 		# Window Settings
 		self.setMinimumSize(580, 420)
-		self.setWindowTitle(self.PRODUCT_NAME+" v"+self.PRODUCT_VERSION)
+		self.setWindowTitle(self.PRODUCT_NAME+' v'+self.PRODUCT_VERSION)
 
 		# Tray Icon
 		self.trayIcon = SerialCommanderTrayIcon(self)
@@ -300,9 +300,9 @@ class SerialCommanderMainWindow(QMainWindow):
 
 		# Show Note
 		if(len(self.commands) == 0):
-			self.statusBar.showMessage("Please open a command configuration file (File -> Open File...)")
+			self.statusBar.showMessage('Please open a command configuration file (File -> Open File...)')
 		else:
-			self.statusBar.showMessage("If you like SerialCommander please consider making a donation to support further development ("+self.PRODUCT_WEBSITE+").")
+			self.statusBar.showMessage('If you like SerialCommander please consider making a donation to support further development ('+self.PRODUCT_WEBSITE+').')
 
 	def UpdatePortAndBaudText(self):
 		self.portAction.setText('Port: '+str(self.serialPort))
@@ -371,10 +371,10 @@ class SerialCommanderMainWindow(QMainWindow):
 			return True
 		except Exception as e:
 			if(message):
-				messageText = "Cannot send data. Please check if serial port »"+self.serialPort+"« is correct and if you have privileges to use this port (add your user to group dialout via »usermod -a -G dialout USERNAME« and log in again).\n\n"+str(e)
+				messageText = 'Cannot send data. Please check if serial port »'+self.serialPort+'« is correct and if you have privileges to use this port (add your user to group dialout via »usermod -a -G dialout USERNAME« and log in again).\n\n'+str(e)
 				if(platform.system() == 'Windows' or platform.system() == 'Darwin'):
-					messageText = "Cannot send data. Please check if serial port »"+self.serialPort+"« is correct.\n\nIf the error persists, please use the command line tool to examine the error.\n\n"+str(e)
-				QMessageBox.critical(self, "Connection Error", messageText)
+					messageText = 'Cannot send data. Please check if serial port »'+self.serialPort+'« is correct.\n\nIf the error persists, please use the command line tool to examine the error.\n\n'+str(e)
+				QMessageBox.critical(self, 'Connection Error', messageText)
 			return False
 
 	def OnSendCommand(self):
@@ -407,27 +407,27 @@ class SerialCommanderMainWindow(QMainWindow):
 			retval = msg.exec_()
 
 	def OnSelectSerialPort(self, e):
-		item, ok = QInputDialog.getItem(self, "Port Selection", "Please select serial port which should be used to communicate with the device.", self.serialPorts, 0, False)
+		item, ok = QInputDialog.getItem(self, 'Port Selection', 'Please select serial port which should be used to communicate with the device.', self.serialPorts, 0, False)
 		if ok and item:
 			self.serialPort = item
 			self.UpdatePortAndBaudText()
 
 	def OnSelectSerialBaud(self, e):
-			item, ok = QInputDialog.getInt(self, "Change Baudrate", "Please enter the baudrate you want to use.", self.serialBaud, 600, 2000000)
+			item, ok = QInputDialog.getInt(self, 'Change Baudrate', 'Please enter the baudrate you want to use.', self.serialBaud, 600, 2000000)
 			if ok:
 				self.serialBaud = item
 				self.UpdatePortAndBaudText()
 
 	def OnOpenFile(self, e):
-		defaultExamplesPath = "/usr/share/SerialCommander/examples"
-		defaultPath = ""
+		defaultExamplesPath = '/usr/share/SerialCommander/examples'
+		defaultPath = ''
 		if(path.exists(defaultExamplesPath)): defaultPath = defaultExamplesPath
-		fileName, _ = QFileDialog.getOpenFileName(self, "Choose Command File", defaultPath, "SerialCommander Files (*.json);;All Files (*.*)")
+		fileName, _ = QFileDialog.getOpenFileName(self, 'Choose Command File', defaultPath, 'SerialCommander Files (*.json);;All Files (*.*)')
 		if(not fileName): return
 		self.LoadSettings(fileName, True)
 
 	def OnSaveFile(self, e):
-		fileName, _ = QFileDialog.getSaveFileName(self, "Save Command File", "", "SerialCommander Files (*.json);;All Files (*.*)")
+		fileName, _ = QFileDialog.getSaveFileName(self, 'Save Command File', '', 'SerialCommander Files (*.json);;All Files (*.*)')
 		if(not fileName): return
 		self.SaveSettings(fileName)
 
